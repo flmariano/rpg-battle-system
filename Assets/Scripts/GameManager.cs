@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour
     }
 
     public GameState state;
+    
+    private BattleController battleController;
 
     // Start is called before the first frame update
     void Start()
     {
         state = GameState.Running;
+        battleController = BattleController.instance;
     }
 
     // Update is called once per frame
@@ -24,4 +27,16 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    /// <summary>
+    /// gets called every turn and then executes the turn
+    /// </summary>
+    void ExecuteMainGameLoop()
+    {
+        // initiate move selection sequence if applicable, otherwise just execute the turn
+
+        battleController.ExecuteTurn();
+    }
+
+
 }
